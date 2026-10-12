@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121611">
+  <meta name="description" content="Memes made by IB students, for IB students. Browse, share, and anonymously submit your best IB memes.">
+  <title>IB Meme Hub — Surviving together.</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.js" defer crossorigin="anonymous" integrity="sha384-l7yJnh/cWKcqeTC5adHUdc5b+J4Kb2QTGRSkCQehn1YT5xEFlrgwnXOYuvrtI1F6"></script>
+  <script src="./js/config.js" defer></script>
+  <script type="module" src="./js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#feed">Skip to memes</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./" aria-label="IB Meme Hub home"><img src="./assets/logo.svg" width="38" height="38" alt=""><span>IB Meme<span class="brand-hub">Hub<span class="brand-dot">.</span></span></span></a>
+      <button class="icon-button menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">☰</button>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#feed" data-sort="trending" class="nav-link active">Home</a>
+        <a href="#feed" data-sort="trending" class="nav-link">Trending <span class="small-flame">↗</span></a>
+        <a href="#feed" data-sort="newest" class="nav-link">Newest</a>
+        <button class="nav-link" data-random>Random ↝</button>
+        <a href="#categories" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions"><button class="icon-button" id="search-focus" aria-label="Search memes">⌕</button><button class="icon-button" id="theme-toggle" aria-label="Switch to light theme">☀</button><button class="button button-green header-upload" data-upload><span>＋</span> Upload Meme</button></div>
+    </div>
+  </header>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> THE UNOFFICIAL IB SURVIVAL CLUB</p>
+        <h1 id="hero-title">Because the IB<br>wasn’t <span class="highlight">painful</span><br> enough<span class="accent">.</span></h1>
+        <p class="hero-description">Memes made by IB students, for IB students.<br>A little less stress. A lot more questionable coping.</p>
+        <div class="hero-actions"><a class="button button-green" href="#feed">Explore Memes <span>↗</span></a><button class="button button-outline" data-upload>＋ Upload a Meme</button></div>
+        <div class="hero-note"><span class="avatar-stack" aria-hidden="true"><span>☺</span><span>✳</span><span>☻</span><span>✎</span></span><span>No accounts. No grades. <strong>Just memes.</strong></span></div>
+      </div>
+      <div class="hero-art" aria-label="Featured IB humor">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <span class="art-label">a healthy coping mechanism™</span>
+        <div class="hero-meme"><div class="paper-top"><span>THE IB EXPERIENCE</span><span>↗</span></div><p>“I’ll start my EE<br>over the summer.”</p><div class="calendar-art"><span>AUGUST</span><strong>31</strong><small>11:59 PM</small></div><p class="paper-caption">summer: <em>which one?</em></p><div class="paper-bottom"><span>✦ 100% academically accurate</span><span>IB MH.</span></div></div>
+        <span class="sticker">45 points?<br><strong>best I can do<br>is a meme.</strong></span>
+        <span class="scribble" aria-hidden="true">↝</span>
+      </div>
+    </section>
+    <div class="community-strip"><span><span class="accent">✳</span> ANONYMOUS BY DESIGN</span><span><span class="accent">◉</span> STUDENT MADE</span><span><span class="accent">✓</span> MODERATED, NOT GRADED</span><span><span class="accent">↗</span> FREE TO DOWNLOAD</span></div>
+    <section id="feed" class="feed-section" aria-labelledby="feed-title">
+      <div class="section-heading"><div><p class="eyebrow">YOUR DAILY DOSE OF “SAME.”</p><h2 id="feed-title">The meme feed<span class="accent">.</span></h2></div><button class="button button-outline random-button" data-random>⚄ Random Meme</button></div>
+      <div class="feed-toolbar"><div class="sort-tabs" role="group" aria-label="Sort memes"><button class="sort-tab active" data-sort="trending" aria-pressed="true">↗ Trending</button><button class="sort-tab" data-sort="newest" aria-pressed="false">◷ Newest</button><button class="sort-tab" data-sort="random" aria-pressed="false">⚄ Random</button></div><label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search your academic trauma…" aria-label="Search memes by title, category, or tags"><kbd aria-hidden="true">/</kbd></label></div>
+      <div id="categories" class="category-bar"><div id="category-chips" class="category-chips" role="group" aria-label="Popular categories"></div><label class="all-categories"><span class="sr-only">All categories</span><select id="category-select"><option value="">All subjects ↓</option></select></label></div>
+      <div id="demo-banner" class="demo-banner" hidden><span>✦ <strong>You’re browsing demo memes.</strong> Connect Supabase to join the real feed.</span><button class="text-button" data-upload>How does uploading work? ↗</button></div>
+      <div class="feed-meta"><span id="result-count" aria-live="polite">Loading the good stuff…</span><span class="feed-meta-note">Procrastination, but make it productive.</span></div>
+      <div id="feed-state" class="feed-state" role="status" hidden></div>
+      <div id="meme-grid" class="meme-grid" aria-label="Memes"></div>
+      <button id="load-more" class="button button-outline load-more" hidden>Load more memes ↓</button>
+      <div class="upload-callout"><div><span class="callout-icon">✎</span><div><h3>Turn your breakdown into a breakthrough.</h3><p>Got a meme that deserves more than a group chat? Let’s see it.</p></div></div><button class="button button-green" data-upload>Submit your meme ↗</button></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="footer-top"><a class="brand" href="./"><img src="./assets/logo.svg" width="32" height="32" alt=""><span>IB Meme<span class="brand-hub">Hub.</span></span></a><span>Made for the students who are <em>“doing fine.”</em></span><a href="#feed">Back to the memes ↑</a></div><p>IB Meme Hub is an independent student community and is not affiliated with, endorsed by, or associated with the International Baccalaureate Organization.</p><div class="footer-bottom"><span>© <span id="year"></span> IB Meme Hub</span><span>Be kind. Keep it original. Survive together. ✳</span></div></footer>
+  <dialog id="upload-dialog" class="upload-dialog" aria-labelledby="upload-title"><div class="dialog-header"><div><p class="eyebrow">SHARING IS A COPING MECHANISM</p><h2 id="upload-title">Drop your best meme<span class="accent">.</span></h2></div><button class="icon-button" data-close aria-label="Close upload">×</button></div><p class="dialog-intro">Anonymous by default. Reviewed before it hits the feed.</p><form id="upload-form"><label class="dropzone" id="dropzone" for="upload-image"><input id="upload-image" type="file" accept="image/jpeg,image/png,image/webp,image/gif" required><span class="dropzone-copy"><span class="dropzone-icon">↑</span><strong>Choose an image or drag it here</strong><small>JPG, PNG, WEBP or GIF · up to 10 MB</small></span><img id="upload-preview" alt="Your selected meme preview" hidden></label><label>Title <input id="upload-title-input" name="title" maxlength="140" placeholder="When your predicted grade is a prediction…" required></label><div class="form-row"><label>Category <select id="upload-category" name="category" required><option value="">Choose a category</option></select></label><label>Display name <span class="muted">(optional)</span><input name="display_name" maxlength="60" placeholder="Anonymous IB Survivor"></label></div><label>Tags <span class="muted">(optional, comma separated)</span><input name="tags" maxlength="250" placeholder="exam season, sleep deprived, relatable"></label><div class="moderation-note">✓ Every submission is reviewed. Keep it kind, protect people’s privacy, and only share images you have permission to post.</div><p id="upload-status" class="form-status" role="status" aria-live="polite"></p><button id="upload-submit" class="button button-green full-width" type="submit">Submit for approval ↗</button><p class="form-footnote">No login. No email. No additional existential crisis.</p></form></dialog>
+  <dialog id="meme-dialog" class="meme-dialog" aria-labelledby="meme-detail-title"><button class="icon-button detail-close" data-close aria-label="Close meme">×</button><div id="meme-detail"></div></dialog>
+  <dialog id="report-dialog" class="report-dialog" aria-labelledby="report-title"><div class="dialog-header"><h2 id="report-title">Report this meme?</h2><button class="icon-button" data-close aria-label="Cancel report">×</button></div><p>Report this meme as inappropriate? This flags it for the community owner to review.</p><div class="report-actions"><button class="button button-outline" id="report-cancel">Cancel</button><button class="button button-green" id="report-confirm">Yes, report</button></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
